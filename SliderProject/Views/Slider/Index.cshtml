@@ -1,0 +1,49 @@
+﻿@using SliderProject.Models;
+@model List<Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            }
+        );
+    });
+</script>
+
+<table class="table table-bordered" style="margin-top:20px;" id="myTable">
+    <thead>
+    <th><center>ID</center></th>
+    <th><center>Slider Image</center></th>
+    <th><center>Delete</center></th>
+    </thead>
+    <tbody>
+        @{
+
+            DBSliderEntities db = new DBSliderEntities();
+
+            foreach (var item in db.Slider)
+            {
+                <tr>
+                    <td>
+                        <center>@item.sliderID</center>
+                    </td>
+                    <td>
+                        <center><img src="@item.sliderURL" width="800" height="200"></center>
+                    </td>
+                    <td>
+                        <center><a href="/Slider/SliderSil/@item.sliderID" class="btn btn-danger">Delete</a></center>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<center><a class="btn btn-primary" href="~/Slider/YeniSlider">Add New Slider</a></center>

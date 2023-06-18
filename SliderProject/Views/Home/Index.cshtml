@@ -1,0 +1,35 @@
+﻿@using SliderProject.Models;
+@model Slider
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- SLIDER -->
+
+<div class="w3-content w3-display-container">
+    <div class="container">
+        @{
+
+            DBSliderEntities db = new DBSliderEntities();
+            foreach (var item in db.Slider)
+            {
+                <img class="mySlides" src="@item.sliderURL" alt="@item.sliderID" style="width:100%">
+
+            }
+        }
+    </div>
+
+
+
+    <br />
+
+</div>
+<center>
+    <a style="text-decoration: none; cursor: pointer" class="prev" onclick="plusDivs(-1)">&#10094;</a>
+    <a style="text-decoration: none; cursor: pointer" class="next" onclick="plusDivs(1)">&#10095;</a>
+</center>
+
+
+

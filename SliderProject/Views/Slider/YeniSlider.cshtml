@@ -1,0 +1,22 @@
+﻿@model SliderProject.Models.Slider
+
+@{
+    ViewBag.Title = "YeniSlider";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Yeni Slider Ekleme Sayfası</h2>
+<hr />
+
+@using (Html.BeginForm("YeniSlider", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.LabelFor(x => x.sliderURL)
+        <input type="file" name="SliderURL" accept=".jpg,.png,.jpeg" class="form-control" required placeholder="Slider Seçiniz" />
+        <br />
+        <button class="btn btn-info" type="submit">Kaydet</button>
+    </div>
+}
+
+
